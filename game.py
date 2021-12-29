@@ -21,7 +21,7 @@ class TicTacToe:
 
 	def __init__(self, room: 'str') -> None:
 		self.__room = '1'
-		print('room', room)
+		# print('room', room)
 		if (room in _SESSION.keys()):
 			self.__room = room
 		self.__board: 'list[str]' = self.__get_from_session(_KEY_BOARD)

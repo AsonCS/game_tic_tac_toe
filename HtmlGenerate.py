@@ -7,17 +7,11 @@ class HtmlGenerate:
 			html = f.read()
 
 			params: 'dict[str,str]' = {}
-			params['$player_win_msg'] = player
-			params['$hidden_player_win_msg'] = '' if has_game_ended else 'hidden'
-			params['$hidden_time_player_win_msg'] = 'hidden' if has_game_ended else ''
-			index = 1
-			for field in board:
-				value_disabled = '' if TicTacToe.is_available(field) else 'disabled'
-				key_button_value = f'$b{index}'
-				button_disabled = f'$button_disabled_{index}'
-				params[key_button_value] = field
-				params[button_disabled] = value_disabled
-				index += 1
+			params['throw Error()'] = ''
+			params['$player'] = f'"{player}"'
+			board = str(board).replace("'", '"')
+			params['$board'] = board
+			params['$has_game_ended'] = 'true' if has_game_ended else 'false'
 
 			html = self.__replace_html_variables(html, params)
 			f.close()

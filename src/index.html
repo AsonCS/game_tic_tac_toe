@@ -14,33 +14,42 @@
 	<body>
 		<div>
 			<div class="center">
-				<h1 $hidden_player_win_msg>Parabéns Jogador "$player_win_msg"<br/>Você ganhou o jogo...</h1>
+				<h1 id="hidden_player_win_msg">Parabéns Jogador "<label>X</label>"<br/>Você ganhou o jogo...</h1>
 			</div>
 			<div class="center">
-				<h2 $hidden_time_player_win_msg>Vez do Jogador "$player_win_msg"</h2>
+				<h2 id="hidden_time_player_win_msg">Vez do Jogador "<label>X</label>"</h2>
 			</div>
 			<table class="center">
 				<tbody>
 					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_1>$b1</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_2>$b2</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_3>$b3</button></td>
+						<td><button id="button_1" disabled></button></td>
+						<td><button id="button_2" disabled></button></td>
+						<td><button id="button_3" disabled></button></td>
 					</tr>
 					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_4>$b4</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_5>$b5</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_6>$b6</button></td>
+						<td><button id="button_4" disabled></button></td>
+						<td><button id="button_5" disabled></button></td>
+						<td><button id="button_6" disabled></button></td>
 					</tr>
 					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_7>$b7</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_8>$b8</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_9>$b9</button></td>
+						<td><button id="button_7" disabled></button></td>
+						<td><button id="button_8" disabled></button></td>
+						<td><button id="button_9" disabled></button></td>
 					</tr>
 				</tbody>
 			</table>				
 			<div class="center">
 				<button onclick="refreshScreen()">Recomeçar</button>
-			</div>			
+			</div>		
+			<script>
+				throw Error()
+				let player = $player
+				let board = $board
+				let has_game_ended = false
+			</script>
+			<script>
+				loadScene()
+			</script>	
 		</div>
 	</body>
 </html>
