@@ -1,67 +1,85 @@
-# Python 3 server example
+import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from os import path as os_path
+
 from Controller import Controller
 
-hostName = "192.168.0.118"
-serverPort = 5000
+DIRECTORY = os_path.abspath(__file__)[:-6]
+HOST_NAME = 'localhost'
+SERVER_PORT = 5000
+
 
 class AppServer(BaseHTTPRequestHandler):
 
-	def do_GET(self):
-		controller = Controller(self.path)
-		if (controller.type == Controller.PATH_TO_STATIC):
-			self.__handle_static_path(controller.path)
-		elif (controller.type == Controller.PATH_TO_API_GAME):
-			self.__handle_api_game_path(controller)
-		else:
-			self.__handle_default_path(controller)
-		
-		
-	def __handle_api_game_path(self, controller: 'Controller'):
-		code, json = controller.load_game_json()
+    # noinspection PyPep8Naming
+    def do_GET(self):
+        controller = Controller(self.path, DIRECTORY)
+        if controller.type == Controller.PATH_TO_STATIC:
+            self.__handle_static_path(controller.path)
+        elif controller.type == Controller.PATH_TO_API_GAME:
+            self.__handle_api_game_path(controller)
+        else:
+            self.__handle_default_path(controller)
 
-		self.send_response(code)
-		self.send_header("Content-type", "application/json")
-		self.end_headers()
+    def __handle_api_game_path(self, controller: 'Controller'):
+        code, json = controller.load_game_json()
 
-		for line in json:
-			self.wfile.write(bytes(line, "utf-8"))
-	
+        self.send_response(code)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
 
-	def __handle_default_path(self, controller: 'Controller'):
-		code, html = controller.load_game_html()
+        for line in json:
+            self.wfile.write(bytes(line, "utf-8"))
 
-		self.send_response(code)
-		self.send_header("Content-type", "text/html")
-		self.end_headers()
+    def __handle_default_path(self, controller: 'Controller'):
+        code, html = controller.load_game_html()
 
-		for line in html:
-			self.wfile.write(bytes(line, "utf-8"))
+        self.send_response(code)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+
+        for line in html:
+            self.wfile.write(bytes(line, "utf-8"))
+
+    def __handle_static_path(self, path: 'str'):
+        try:
+            path = path[1:]
+            self.send_response(200)
+            # self.send_header("", "")
+            self.end_headers()
+            f = open(f'{DIRECTORY}{path}')
+            text = f.read()
+            for line in text:
+                self.wfile.write(bytes(line, "utf-8"))
+            f.close()
+        except Exception as e:
+            print('__handle_static_path', e)
+            return
 
 
-	def __handle_static_path(self, path: 'str'):
-		try:
-			path = path[1:]
-			self.send_response(200)
-			# self.send_header("", "")
-			self.end_headers()
-			f = open(path)
-			text = f.read()
-			for line in text:
-				self.wfile.write(bytes(line, "utf-8"))
-			f.close()
-		except:
-			return
-
-
-if __name__ == "__main__":        
-    webServer = HTTPServer((hostName, serverPort), AppServer)
-    print("Server started http://%s:%s" % (hostName, serverPort))
-
+def init():
+    web_server = HTTPServer((HOST_NAME, SERVER_PORT), AppServer)
+    print(f'Server started http://{HOST_NAME}:{SERVER_PORT}')
     try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
+        web_server.serve_forever()
+    except Exception as e:
+        print(e)
 
-    webServer.server_close()
-    print("Server stopped.")
+    web_server.server_close()
+    print('init', "Server stopped.")
+
+
+def load_ip_address() -> 'str':
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+    except Exception as e:
+        print('load_ip_address', e)
+        return HOST_NAME
+
+
+# noinspection PyRedeclaration
+HOST_NAME = load_ip_address()
+if __name__ == "__main__":
+    init()

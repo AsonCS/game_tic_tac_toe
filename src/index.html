@@ -1,55 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
-		<title>Jogo da Velha (Tic Tac Toe)</title>
-		<link rel="icon" type="image/x-icon" href="src/static/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="src/static/index.css" />
-		<script src="src/static/index.js"></script>
-	</head>
-	<body>
-		<div>
-			<div class="center">
-				<h1 id="hidden_player_win_msg">Parabéns Jogador "<label>X</label>"<br/>Você ganhou o jogo...</h1>
-			</div>
-			<div class="center">
-				<h2 id="hidden_time_player_win_msg">Vez do Jogador "<label>X</label>"</h2>
-			</div>
-			<table class="center">
-				<tbody>
-					<tr>
-						<td><button id="button_1" disabled></button></td>
-						<td><button id="button_2" disabled></button></td>
-						<td><button id="button_3" disabled></button></td>
-					</tr>
-					<tr>
-						<td><button id="button_4" disabled></button></td>
-						<td><button id="button_5" disabled></button></td>
-						<td><button id="button_6" disabled></button></td>
-					</tr>
-					<tr>
-						<td><button id="button_7" disabled></button></td>
-						<td><button id="button_8" disabled></button></td>
-						<td><button id="button_9" disabled></button></td>
-					</tr>
-				</tbody>
-			</table>				
-			<div class="center">
-				<button onclick="refreshScreen()">Recomeçar</button>
-			</div>		
-			<script>
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Jogo da Velha (Tic Tac Toe)</title>
+    <link rel="icon" type="image/x-icon" href="src/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="src/static/index.css"/>
+    <script src="src/static/index.js"></script>
+</head>
+<body>
+<div>
+    <div class="center">
+        <h1 id="hidden_player_win_msg">Parabéns Jogador "<label>X</label>"<br/>Você ganhou o jogo...</h1>
+    </div>
+    <div class="center">
+        <h2 id="hidden_time_player_win_msg">Vez do Jogador "<label>X</label>"</h2>
+    </div>
+    <table class="center">
+        <tbody>
+        <tr>
+            <td>
+                <button id="button_1" disabled></button>
+            </td>
+            <td>
+                <button id="button_2" disabled></button>
+            </td>
+            <td>
+                <button id="button_3" disabled></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="button_4" disabled></button>
+            </td>
+            <td>
+                <button id="button_5" disabled></button>
+            </td>
+            <td>
+                <button id="button_6" disabled></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="button_7" disabled></button>
+            </td>
+            <td>
+                <button id="button_8" disabled></button>
+            </td>
+            <td>
+                <button id="button_9" disabled></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <button onclick="refreshScreen()">Recomeçar</button>
+    </div>
+    <script>
 				throw Error()
 				let player = $player
 				let board = $board
 				let has_game_ended = false
-			</script>
-			<script>
+
+    </script>
+    <script>
 				loadScene()
-			</script>	
-		</div>
-	</body>
+
+    </script>
+</div>
+</body>
 </html>

@@ -22,8 +22,8 @@ button {
 	border-radius: 5px;
 	font-size: 2em;
 	font-weight: 900;
-	height: 7vh;
-	width: 7vh;
+	height: 7vw;
+	width: 7vw;
 }
 
 button:hover {
