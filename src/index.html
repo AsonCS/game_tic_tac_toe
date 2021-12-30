@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
-		<title>Jogo da Velha (Tic Tac Toe)</title>
-		<link rel="icon" type="image/x-icon" href="src/static/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="src/static/index.css" />
-		<script src="src/static/index.js"></script>
-	</head>
-	<body>
-		<div>
-			<div class="center">
-				<h1 $hidden_player_win_msg>Parabéns Jogador "$player_win_msg"<br/>Você ganhou o jogo...</h1>
-			</div>
-			<div class="center">
-				<h2 $hidden_time_player_win_msg>Vez do Jogador "$player_win_msg"</h2>
-			</div>
-			<table class="center">
-				<tbody>
-					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_1>$b1</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_2>$b2</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_3>$b3</button></td>
-					</tr>
-					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_4>$b4</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_5>$b5</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_6>$b6</button></td>
-					</tr>
-					<tr>
-						<td><button onclick="onClickButton(this)" $button_disabled_7>$b7</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_8>$b8</button></td>
-						<td><button onclick="onClickButton(this)" $button_disabled_9>$b9</button></td>
-					</tr>
-				</tbody>
-			</table>				
-			<div class="center">
-				<button onclick="refreshScreen()">Recomeçar</button>
-			</div>			
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Jogo da Velha (Tic Tac Toe)</title>
+    <link rel="icon" type="image/x-icon" href="src/static/fingerprint.svg">
+    <link rel="stylesheet" type="text/css" href="src/static/index.css"/>
+    <script src="src/static/index.js"></script>
+</head>
+<body>
+<div>
+    <div class="center">
+        <h1 $hidden_player_win_msg>Parabéns Jogador "$player_win_msg"<br/>Você ganhou o jogo...</h1>
+    </div>
+    <div class="center">
+        <h2 $hidden_time_player_win_msg>Vez do Jogador "$player_win_msg"</h2>
+    </div>
+    <table class="center">
+        <tbody>
+        <tr>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_1>$b1</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_2>$b2</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_3>$b3</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_4>$b4</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_5>$b5</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_6>$b6</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_7>$b7</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_8>$b8</button>
+            </td>
+            <td>
+                <button onclick="onClickButton(this)" $button_disabled_9>$b9</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <button onclick="refreshScreen()">Recomeçar</button>
+    </div>
+</div>
+</body>
 </html>
